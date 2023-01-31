@@ -10,30 +10,18 @@ import Messenger from "./pages/messenger";
 
 function App() {
   const user = localStorage.getItem("user");
-   
+
   return (
     <>
       <Header />
       <Switch>
-        <Route exact path="/" element={user ? <Homepage /> : <Login />} />
-        <Route
-          exact
-          path="/register"
-          element={user ? <Homepage /> : <Register />}
-        />
-
-        <Route exact path="/profile" element={user ? <Profile /> : <Login />} />
-        <Route
-          exact
-          path="/steps"
-          element={user ? <ProfileSteps /> : <Login />}
-        />
-        <Route
-          exact
-          path="/chat"
-          element={user ? <Messenger /> : <Login />}
-        />
-        <Route exact path="*" element={user ? <Homepage /> : <Login />} />
+        <Route exact path="/" element={<Homepage />} />
+        <Route exact path="/register" element={<Register />} />
+        <Route exact path="/profile" element={<Profile />} />
+        <Route exact path="/steps" element={<ProfileSteps />} />
+        <Route exact path="/chat" element={<Messenger />} />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="*" element={<Homepage />} />
       </Switch>
     </>
   );

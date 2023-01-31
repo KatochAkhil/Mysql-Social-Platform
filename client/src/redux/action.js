@@ -1,6 +1,6 @@
 import { LOGIN, REGISTER, SHARE_POST, USER_PROFILE } from "./constant";
 
-export const login = (user) => async (dispatch) => {
+export const loginState = (user) => async (dispatch) => {
   dispatch({ type: LOGIN, payload: user });
 };
 

@@ -4,3 +4,8 @@ export const addPost = `posts/post/add`;
 export const getUserspostsById = (userId) => `/posts/getUsersPosts/${userId}`;
 export const getUserprofile = (userId) => `/auth/user/${userId}`;
 export const postProfileData = `userProfile/userProfile`;
+export const searchUser = (search) => `auth/search?search=${search}`;
+export const createConversation = `conversations/add`;
+export const getConversation = (id) => `conversations/get/${id}`;
+export const getAllMessages = (id) => `message/get/${id}`;
+export const postMessage = `message/add`;

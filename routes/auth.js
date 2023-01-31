@@ -188,12 +188,17 @@ router.post("/users", async (req, res) => {
 
 router.get("/search", async (req, res) => {
   const { search } = req.query;
+
   const getUsers = await UserModal.findAll({
     where: {
       name: { [Op.like]: `%${search}%` },
     },
   });
-  res.status(200).json(getUsers);
+  if (search === "") {
+    return res.status(200).json([]);
+  } else {
+    res.status(200).json(getUsers);
+  }
 });
 
 module.exports = router;

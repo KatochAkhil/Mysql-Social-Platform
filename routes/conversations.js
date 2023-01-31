@@ -11,7 +11,6 @@ router.post("/add", async (req, res) => {
     reciverId: reciverId,
     senderId: senderId,
   });
-
   res.status(200).json(conversations);
 });
 
@@ -19,7 +18,7 @@ router.post("/add", async (req, res) => {
 
 router.get("/get/:senderId", async (req, res) => {
   const { senderId } = req.params;
-  const getConversations = await ConversationModal.findAndCountAll({
+  const getConversations = await ConversationModal.findAll({
     where: {
       senderId: senderId,
     },

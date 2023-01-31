@@ -6,8 +6,7 @@ const router = express.Router();
 //create Message
 
 router.post("/add", async (req, res) => {
-  const { senderId, text, conversationsId } = req.body;
-
+  const { senderId, text, conversationsId } = req.body; 
   await MessageModal.create({
     conversationsId: conversationsId,
     senderId: senderId,
@@ -21,7 +20,7 @@ router.post("/add", async (req, res) => {
 
 router.get("/get/:conversationsId", async (req, res) => {
   const { conversationsId } = req.params;
-  const getConversations = await MessageModal.findAndCountAll({
+  const getConversations = await MessageModal.findAll({
     where: {
       conversationsId: conversationsId,
     },
@@ -33,7 +32,5 @@ router.get("/get/:conversationsId", async (req, res) => {
     res.status(200).json(getConversations);
   }
 });
-
-
 
 module.exports = router;

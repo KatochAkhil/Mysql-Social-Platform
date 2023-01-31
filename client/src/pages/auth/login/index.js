@@ -16,18 +16,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../../../utils/endpoints";
 import { useDispatch } from "react-redux";
-import { login } from "../../../redux/action";
+import { loginState } from "../../../redux/action";
 import axios from "../../../utils/axios";
-import AlertBox from "../../../common/Alert";
 import { createNotification } from "../../../common/createNotifactions";
 
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(false);
-  const [type, setType] = useState();
-  const [errorMessage, setErrorMessage] = useState("");
 
   const {
     register,
@@ -44,7 +40,7 @@ function Login() {
       await axios
         .post(loginUser, e)
         .then((res) => {
-          dispatch(login(res.data));
+          dispatch(loginState(res.data));
           localStorage.setItem("user", JSON.stringify(res.data));
           createNotification("success", "Success", "Login Successfull");
           navigate("/steps");
@@ -155,12 +151,6 @@ function Login() {
           </Card>
         </div>
       </div>
-      <AlertBox
-        open={open}
-        setOpen={setOpen}
-        type={type}
-        successMessage={errorMessage}
-      />
     </div>
   );
 }
