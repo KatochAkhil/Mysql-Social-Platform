@@ -10,11 +10,11 @@ const adduser = (userId, socketId) => {
   !users.some((user) => user.userId === userId) &&
     users.push({ userId, socketId });
 };
+
 io.on("connection", (socket) => {
   console.log("A user Connected");
+  socket.on("addUser", userId=>{
+  
+  })
   // io.emit("welcome", "hello this is socket server");
-  socket.on("addUser", (userId) => {
-    adduser(userId, socket.id);
-    io.emit("getUsers", users);
-  });
 });

@@ -23,13 +23,6 @@ function Messenger() {
   const user = JSON.parse(localStorage.getItem("user"));
   const socket = useRef("ws://localhost:8900");
 
-  useEffect(() => {
-    socket.current?.emit("addUser", user.userId);
-    socket.current.on("getUsers", (users) => {
-      console.log(users);
-    });
-  }, [user]);
-
   const scrollRef = useRef();
   const handleSearch = async (e) => {
     await axios
